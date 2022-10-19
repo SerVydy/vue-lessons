@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изучаем Vue 3</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="app">
+        <button @click="downCounter">-</button>
+        <input 
+            type="number" 
+            @click="upInput($event.target.value)"
+            :value="counter"
+            min="0"
+            max="10">
+        <button @click="upCounter">+</button>
+       {{ counter }}
+
+    </div>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                counter: 0
+            }   
+        },
+        methods: {
+            downCounter(){
+                if(this.counter > 0) this.counter--
+            },
+            upCounter(){
+                if(this.counter < 10) this.counter++
+            },
+            upInput(value){
+                this.counter = value
+                
+            }
+        },
+    })
+        
+
+    app.mount('#app');
+
+
+</script>
+</body>
+</html>
